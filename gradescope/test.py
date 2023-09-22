@@ -1,9 +1,11 @@
 import unittest
 
+from gradescope_utils.autograder_utils.decorators import weight
 from main import *
 
 class TestMealPreference(unittest.TestCase):
 
+    @weight(1)
     def test_create_meal_scores(self):
         preferences = {
             'person1': {'a', 'b', 'c'},
@@ -23,6 +25,7 @@ class TestMealPreference(unittest.TestCase):
 
         assert len(result) == 6
 
+    @weight(2)
     def test_score_users(self):
         preferences = {
             'person1': {'a', 'b', 'c'},
@@ -41,6 +44,7 @@ class TestMealPreference(unittest.TestCase):
         assert scores.get('person3') == 8
         assert scores.get('person4') == 5
 
+    @weight(2)
     def test_find_users_with_lowest_score(self):
         user_scores = {
             'person1': 5,
